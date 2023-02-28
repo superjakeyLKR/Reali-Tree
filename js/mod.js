@@ -1,13 +1,13 @@
 let modInfo = {
-	name: "The ??? Tree",
-	id: "mymod",
-	author: "nobody",
+	name: "Reali-Tree",
+	id: "realitree",
+	author: "SuperjakeyLKR",
 	pointsName: "points",
 	modFiles: ["layers.js", "tree.js"],
 
 	discordName: "",
 	discordLink: "",
-	initialStartPoints: new Decimal (10), // Used for hard resets and new players
+	initialStartPoints: new Decimal (0), // Used for hard resets and new players
 	offlineLimit: 1,  // In hours
 }
 
@@ -19,8 +19,7 @@ let VERSION = {
 
 let changelog = `<h1>Changelog:</h1><br>
 	<h3>v0.0</h3><br>
-		- Added things.<br>
-		- Added stuff.`
+		- Nothing yet!`
 
 let winText = `Congratulations! You have reached the end and beaten this game, but for now...`
 
@@ -41,8 +40,17 @@ function canGenPoints(){
 function getPointGen() {
 	if(!canGenPoints())
 		return new Decimal(0)
-
 	let gain = new Decimal(1)
+	//add the buyable effects
+	if (player.p.buyables[11].gte(1)) gain = gain.add(player.p.buyables[11].mul(player.p.buyables[12].add(1)))
+	if (hasUpgrade("p", 11)) gain = gain.mul(2)
+	if (hasUpgrade("p", 12)) gain = gain.mul(upgradeEffect("p", 12))
+	if (player.p.buyables[12].gte(1)) gain = gain.mul(player.p.buyables[12].add(1).pow(player.p.buyables[13].add(1)))
+	if (hasUpgrade("p", 22)) gain = gain.mul(upgradeEffect("p", 22))
+	if ()
+	if (hasUpgrade("p", 23)) gain = gain.mul(upgradeEffect("p", 23))
+	
+	if (hasUpgrade("a", 11)) gain = gain.mul(upgradeEffect("a", 11))
 	return gain
 }
 
