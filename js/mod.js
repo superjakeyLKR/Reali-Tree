@@ -47,7 +47,6 @@ function getPointGen() {
 	if (hasUpgrade("p", 12)) gain = gain.mul(upgradeEffect("p", 12))
 	if (player.p.buyables[12].gte(1)) gain = gain.mul(player.p.buyables[12].add(1).pow(player.p.buyables[13].add(1)))
 	if (hasUpgrade("p", 22)) gain = gain.mul(upgradeEffect("p", 22))
-	if ()
 	if (hasUpgrade("p", 23)) gain = gain.mul(upgradeEffect("p", 23))
 	
 	if (hasUpgrade("a", 11)) gain = gain.mul(upgradeEffect("a", 11))
